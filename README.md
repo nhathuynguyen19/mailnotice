@@ -25,11 +25,11 @@ chmod +x ./*.sh
 *Updating...*
 
 ## Config Help
-- Application will ask and we answer (for the first time)
+- [Paste](https://stackoverflow.com/questions/7123709/how-to-paste-into-a-terminal) `mailnotice-config` into the terminal (for the first time)
 ### Gmail
-- `server`: `imap.gmail.com`
-- `username`: Type your email
-- `app-password`: paste [app password](https://myaccount.google.com/apppasswords) into terminal (password will not show, then press Enter to complete)
+- `IMAP Host`: `imap.gmail.com`
+- `Username`: Type your email
+- `App password`: paste [app password](https://myaccount.google.com/apppasswords) into terminal (password will not show, then press Enter to complete)
 ## Uninstall
 ## Linux (Xubuntu 24.04.3 LTS x86_64,...)
 - [Open terminal](https://www.reddit.com/r/linuxmasterrace/comments/tyyjr4/how_do_you_open_the_terminal/)
@@ -37,6 +37,7 @@ chmod +x ./*.sh
 ```bash
 ./uninstall.sh
 ```
+
 
 
 

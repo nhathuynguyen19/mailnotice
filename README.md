@@ -10,8 +10,8 @@
 ## Install
 ### Linux (Xubuntu 24.04.3 LTS x86_64,...)
 - [Open terminal](https://www.reddit.com/r/linuxmasterrace/comments/tyyjr4/how_do_you_open_the_terminal/)
-- [Paste this into the terminal](https://stackoverflow.com/questions/7123709/how-to-paste-into-a-terminal)
 - Install [git](https://git-scm.com/install/linux) if it is not installed yet
+- [Paste this into the terminal](https://stackoverflow.com/questions/7123709/how-to-paste-into-a-terminal)
 ```bash
 git clone https://github.com/nhathuynguyen19/mailnotice.git
 cd mailnotice/
@@ -37,4 +37,5 @@ chmod +x ./*.sh
 ```bash
 ./uninstall.sh
 ```
+
 

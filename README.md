@@ -24,7 +24,7 @@ chmod +x ./*.sh
 ### MacOS
 *Updating...*
 
-## Config
+## Config Help
 - Application will ask and we answer (for the first time)
 ### Gmail
 - `server`: `imap.gmail.com`
@@ -37,6 +37,7 @@ chmod +x ./*.sh
 ```bash
 ./uninstall.sh
 ```
+
 
 
 

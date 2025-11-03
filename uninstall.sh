@@ -15,7 +15,6 @@ if systemctl --user list-units --all --type=service | grep -q "${SERVICE_NAME}.s
     systemctl --user disable "$SERVICE_NAME" || true
     rm -f "$HOME/.config/systemd/user/${SERVICE_NAME}.service"
     systemctl --user daemon-reload
-    systemctl --user reset-failed "$SERVICE_NAME.service"
 fi
 
 # Xóa virtual environment

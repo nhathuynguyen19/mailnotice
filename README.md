@@ -18,7 +18,7 @@ cd mailnotice/
 chmod +x ./*.sh
 ./install.sh
 ```
-- After installation, don't close terminal and navigate to [Config Help](##Config)
+- After installation, don't close terminal and navigate to [Config Help](https://github.com/nhathuynguyen19/mailnotice/blob/master/README.md#config)
 ### Windows
 *Updating...*
 ### MacOS
@@ -37,6 +37,7 @@ chmod +x ./*.sh
 ```bash
 ./uninstall.sh
 ```
+
 
 
 

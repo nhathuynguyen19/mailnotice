@@ -1,7 +1,6 @@
 from imapclient import IMAPClient
 from utils import *
 import email
-import time
 
 CONFIG_FILE = "config.json"
 

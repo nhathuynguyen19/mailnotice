@@ -2,7 +2,7 @@
 ## Features
 - Real-time email pop-up
 - Run as a user service
-- Use less CPU and RAM
+- Use less CPU and RAM (around 20-30MB) 
 
 ### Preview
 <img width="594" height="314" alt="image" src="https://github.com/user-attachments/assets/553063d3-578f-4e5b-adf8-2e31dc49d083" />

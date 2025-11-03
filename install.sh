@@ -3,23 +3,15 @@ set -e
 
 APP_DIR="$(cd "$(dirname "$0")" && pwd)"
 SERVICE_NAME="mailnotice"
-
-echo "[INFO] Updating apt..."
-sudo apt update -y || echo "[INFO] apt update had warnings, continuing..."
-
-if [ -f "$APP_DIR/package_requirements.txt" ]; then
-    echo "[INFO] Installing system packages..."
-    sudo xargs -a "$APP_DIR/package_requirements.txt" apt install -y
-fi
+BIN_DIR="$HOME/.local/bin"
+SERVICE_FILE="$HOME/.config/systemd/user/${SERVICE_NAME}.service"
 
 echo "[INFO] Setting up Python venv..."
 python3 -m venv "$APP_DIR/venv"
 source "$APP_DIR/venv/bin/activate"
-pip install --upgrade pip
 pip install -r "$APP_DIR/requirements.txt"
 
 echo "[INFO] Installing systemd service..."
-SERVICE_FILE="$HOME/.config/systemd/user/${SERVICE_NAME}.service"
 
 mkdir -p "$(dirname "$SERVICE_FILE")"
 
@@ -45,5 +37,40 @@ systemctl --user daemon-reload
 systemctl --user enable $SERVICE_NAME
 systemctl --user start $SERVICE_NAME
 
+# -------------------------------
+# Tạo lệnh mailnotice-config
+# -------------------------------
+mkdir -p "$BIN_DIR"
 
-echo "[INFO] Installation complete. The app is now running as a background user service."
+cat > "$BIN_DIR/mailnotice-config" <<EOF
+#!/usr/bin/env bash
+APP_DIR="$APP_DIR"
+
+read -p "IMAP Host: " host
+read -p "Username: " username
+read -s -p "App password: " password
+echo ""
+
+CONFIG_FILE="\$APP_DIR/config.json"
+
+cat > "\$CONFIG_FILE" <<JSON
+{
+    "host": "\$host",
+    "username": "\$username",
+    "password": "\$password"
+}
+JSON
+
+echo "[INFO] Saved configuration to \$CONFIG_FILE"
+EOF
+
+chmod +x "$BIN_DIR/mailnotice-config"
+
+if ! grep -q 'export PATH="$HOME/.local/bin:$PATH"' ~/.bashrc; then
+    echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+    echo "[INFO] Added ~/.local/bin to PATH. Please restart terminal or run:"
+    echo "    source ~/.bashrc"
+fi
+
+echo "[INFO] Installation complete."
+echo "[TIP] Run: mailnotice-config  → to set IMAP host/username/password."

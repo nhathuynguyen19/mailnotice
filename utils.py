@@ -10,19 +10,22 @@ from gi.repository import Notify
 import subprocess
 import re
 
+CONFIG_FILE = "config.json"
+
+def wait_for_config(config_file: str) -> dict:
+    flag_info = True
+    while not os.path.exists(config_file):
+        if flag_info:
+            print("[INFO] Waiting for config.json... (run mailnotice-config)")
+            flag_info = False
+        time.sleep(3)
+    print("[INFO] Detected config.json")
+    return load_config(config_file)
+
 def load_config(config_file: str) -> dict:
     if os.path.exists(config_file):
         with open(config_file, "r") as f:
             config = json.load(f)
-    else:
-        print("No config found yet, please enter IMAP information for the first time:")
-        host = input("server: ")
-        username = input("username: ")
-        password = getpass.getpass("app-password: ")
-        config = {"host": host, "username": username, "password": password}
-        with open(config_file, "w") as f:
-            json.dump(config, f)
-        print(f"Config has been saved in {config_file}")
     return config
 
 def decode_mime_words(s):

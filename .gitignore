@@ -1,0 +1,11 @@
+### venv ###
+venv/*
+
+### .env ###
+.env
+
+### config ###
+config.json
+
+### python ###
+__pycache__/*

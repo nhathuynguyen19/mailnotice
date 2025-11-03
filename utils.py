@@ -15,14 +15,14 @@ def load_config(config_file: str) -> dict:
         with open(config_file, "r") as f:
             config = json.load(f)
     else:
-        print("Chưa có config, nhập thông tin IMAP lần đầu:")
-        host = input("IMAP server: ")
-        username = input("Email: ")
-        password = getpass.getpass("App password: ")
+        print("No config found yet, please enter IMAP information for the first time:")
+        host = input("server: ")
+        username = input("username: ")
+        password = getpass.getpass("app-password: ")
         config = {"host": host, "username": username, "password": password}
         with open(config_file, "w") as f:
             json.dump(config, f)
-        print(f"Đã lưu config vào {config_file}")
+        print(f"Config has been saved in {config_file}")
     return config
 
 def decode_mime_words(s):
@@ -63,7 +63,7 @@ def system_popup(subject: str, body: str):
 def mailnotice(server: IMAPClient):
     while True:
         server.idle()
-        print("Watting responses...")
+        print("Waiting for responses...")
         responses = server.idle_check(timeout=500)
         server.idle_done()
         if responses:

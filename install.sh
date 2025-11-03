@@ -4,21 +4,21 @@ set -e
 APP_DIR="$(cd "$(dirname "$0")" && pwd)"
 SERVICE_NAME="mailnotice"
 
-echo "Updating apt..."
-sudo apt update -y || echo "apt update had warnings, continuing..."
+echo "[INFO] Updating apt..."
+sudo apt update -y || echo "[INFO] apt update had warnings, continuing..."
 
 if [ -f "$APP_DIR/package_requirements.txt" ]; then
-    echo "Installing system packages..."
+    echo "[INFO] Installing system packages..."
     sudo xargs -a "$APP_DIR/package_requirements.txt" apt install -y
 fi
 
-echo "Setting up Python venv..."
+echo "[INFO] Setting up Python venv..."
 python3 -m venv "$APP_DIR/venv"
 source "$APP_DIR/venv/bin/activate"
 pip install --upgrade pip
 pip install -r "$APP_DIR/requirements.txt"
 
-echo "Installing systemd service..."
+echo "[INFO] Installing systemd service..."
 SERVICE_FILE="$HOME/.config/systemd/user/${SERVICE_NAME}.service"
 
 mkdir -p "$(dirname "$SERVICE_FILE")"
@@ -46,4 +46,4 @@ systemctl --user enable $SERVICE_NAME
 systemctl --user start $SERVICE_NAME
 
 
-echo "Installation complete. App is running as a background user service."
+echo "[INFO] Installation complete. The app is now running as a background user service."

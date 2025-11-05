@@ -10,7 +10,7 @@
 ## Install
 ### Linux (Xubuntu 24.04.3 LTS x86_64,...)
 - [Open terminal](https://www.reddit.com/r/linuxmasterrace/comments/tyyjr4/how_do_you_open_the_terminal/)
-- Install [git](https://git-scm.com/install/linux) if it is not installed yet
+- Install [git](https://git-scm.com/install/linux), python, pip if it is not installed yet
 - [Paste](https://stackoverflow.com/questions/7123709/how-to-paste-into-a-terminal) this into the terminal
 ```bash
 git clone https://github.com/nhathuynguyen19/mailnotice.git
@@ -37,6 +37,7 @@ chmod +x ./*.sh
 ```bash
 ./uninstall.sh
 ```
+
 
 
 

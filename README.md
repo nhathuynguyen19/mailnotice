@@ -37,7 +37,13 @@ chmod +x ./*.sh
 ```bash
 ./uninstall.sh
 ```
+## Force Start Service
 
+```bash
+systemctl --user daemon-reload
+systemctl --user enable $SERVICE_NAME
+systemctl --user start $SERVICE_NAME
+```
 
 
 
